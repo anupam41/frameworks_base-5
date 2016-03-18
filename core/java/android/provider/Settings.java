@@ -5533,6 +5533,12 @@ public final class Settings {
         public static final String FULLSCREEN_GESTURES = "fullscreen_gestures";
 
         /**
+         * @hide
+         */
+        @Readable
+        public static final String VOLUME_BUTTON_MUSIC_CONTROL = "volume_button_music_control";
+
+        /**
          * Keys we no longer back up under the current schema, but want to continue to
          * process when restoring historical backup datasets.
          *
