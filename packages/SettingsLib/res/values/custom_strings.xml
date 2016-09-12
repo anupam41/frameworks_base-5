@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Bluetooth codecs -->
     <string name="bluetooth_a2dp_codec_system">Use System Selection (Default)</string>
@@ -16,4 +17,9 @@
     The summary for the BC checkbox preference that describes how checking it
     will set the BC profile as preferred. -->
     <string name="bluetooth_bc_profile_summary_use_for">Use for BA</string>
+    <!-- Description for the screen zoom level that makes interface elements smaller. [CHAR LIMIT=24] -->
+    <string name="screen_zoom_summary_smaller">Smaller</string>
+    <!-- Description for the screen zoom level that makes interface elements smallest. [CHAR LIMIT=24] -->
+    <string name="screen_zoom_summary_smallest">Smallest</string>
+
 </resources>
