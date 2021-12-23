@@ -96,7 +96,6 @@ public class NetworkTrafficSB extends TextView implements StatusIconDisplayable 
     private boolean mSystemIconVisible = true;
     private boolean mShowArrow;
 
-    private boolean mScreenOn = true;
     private boolean iBytes;
     private boolean oBytes;
 
@@ -311,8 +310,6 @@ public class NetworkTrafficSB extends TextView implements StatusIconDisplayable 
             mAttached = true;
             IntentFilter filter = new IntentFilter();
             filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-            filter.addAction(Intent.ACTION_SCREEN_OFF);
-            filter.addAction(Intent.ACTION_SCREEN_ON);
             mContext.registerReceiver(mIntentReceiver, filter, null, getHandler());
         }
         Dependency.get(DarkIconDispatcher.class).addDarkReceiver(this);
@@ -322,6 +319,7 @@ public class NetworkTrafficSB extends TextView implements StatusIconDisplayable 
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
+        clearHandlerCallbacks();
         if (mAttached) {
             mContext.unregisterReceiver(mIntentReceiver);
             mAttached = false;
@@ -335,14 +333,8 @@ public class NetworkTrafficSB extends TextView implements StatusIconDisplayable 
             String action = intent.getAction();
             if (action == null) return;
 
-            if (action.equals(ConnectivityManager.CONNECTIVITY_ACTION) && mScreenOn) {
+            if (action.equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
                 updateSettings();
-            } else if (action.equals(Intent.ACTION_SCREEN_ON)) {
-                mScreenOn = true;
-                updateSettings();
-            } else if (action.equals(Intent.ACTION_SCREEN_OFF)) {
-                mScreenOn = false;
-                clearHandlerCallbacks();
             }
         }
     };
